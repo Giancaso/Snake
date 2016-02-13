@@ -2,11 +2,8 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.SWT;
-<<<<<<< HEAD
 import org.eclipse.swt.widgets.Label;
-=======
 import org.eclipse.swt.widgets.Button;
->>>>>>> branch 'master' of https://github.com/Giancaso/Snake.git
 
 public class Snake {
 

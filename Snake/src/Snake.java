@@ -8,7 +8,6 @@ import org.eclipse.swt.widgets.Button;
 public class Snake {
 
 	protected Shell shell;
-	private Text text;
 
 	/**
 	 * Launch the application.
@@ -45,16 +44,6 @@ public class Snake {
 		shell = new Shell();
 		shell.setSize(450, 300);
 		shell.setText("SWT Application");
-		
-		text = new Text(shell, SWT.BORDER);
-		text.setBounds(99, 119, 76, 21);
-		
-		Label lblCiao = new Label(shell, SWT.NONE);
-		lblCiao.setBounds(249, 44, 55, 15);
-		lblCiao.setText("CIAO");
-		Button btnNewButton = new Button(shell, SWT.NONE);
-		btnNewButton.setBounds(10, 21, 75, 25);
-		btnNewButton.setText("New Button");
 
 	}
 }

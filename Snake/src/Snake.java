@@ -2,6 +2,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Button;
 
 public class Snake {
 
@@ -46,6 +47,10 @@ public class Snake {
 		
 		text = new Text(shell, SWT.BORDER);
 		text.setBounds(99, 119, 76, 21);
+		
+		Button btnNewButton = new Button(shell, SWT.NONE);
+		btnNewButton.setBounds(10, 21, 75, 25);
+		btnNewButton.setText("New Button");
 
 	}
 }

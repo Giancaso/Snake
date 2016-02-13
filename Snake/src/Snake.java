@@ -2,7 +2,11 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.SWT;
+<<<<<<< HEAD
 import org.eclipse.swt.widgets.Label;
+=======
+import org.eclipse.swt.widgets.Button;
+>>>>>>> branch 'master' of https://github.com/Giancaso/Snake.git
 
 public class Snake {
 
@@ -51,6 +55,9 @@ public class Snake {
 		Label lblCiao = new Label(shell, SWT.NONE);
 		lblCiao.setBounds(249, 44, 55, 15);
 		lblCiao.setText("CIAO");
+		Button btnNewButton = new Button(shell, SWT.NONE);
+		btnNewButton.setBounds(10, 21, 75, 25);
+		btnNewButton.setText("New Button");
 
 	}
 }

@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Serpente {
 	private Cubo[] elencocubi;
 	private final int NUM_MAX_CUBI = 50;
@@ -6,14 +8,9 @@ public class Serpente {
 		elencocubi = new Cubo[0];
 	}
 
-	public boolean aggiungi(Cubo c) {
-		for (int i = 0; i < NUM_MAX_CUBI; i++) {
-			if (elencocubi[i] == null) {
-				elencocubi[i] = new Cubo(c);
-				return true;
-			}
-		}
-		return false;
+	public void aggiungi(Cubo c) {
+		elencocubi=Arrays.copyOf(elencocubi, elencocubi.length);
+		elencocubi[elencocubi.length-1]=c.clone();
 	}
 
 	public boolean elimina(int pos) {

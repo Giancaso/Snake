@@ -4,6 +4,9 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Canvas;
 import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.GC;
 
 public class Snake {
 
@@ -12,7 +15,9 @@ public class Snake {
 	private final int Cx = 500;
 	private final int Cy = 400;
 	
-	private Serpente snake = new Serpente();
+	private Serpente snake;
+	
+	GC gc;
 
 	/**
 	 * Launch the application.
@@ -54,7 +59,15 @@ public class Snake {
 		canvas.setBounds(10, 10, Cx, Cy);
 		canvas.setBounds(10, 10, 500, 400);
 		
+		gc = new GC(canvas);
+		
 		Button btnStart = new Button(shlSnake, SWT.NONE);
+		btnStart.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				snake = new Serpente();
+			}
+		});
 		btnStart.setBounds(582, 10, 60, 25);
 		btnStart.setText("START");
 		

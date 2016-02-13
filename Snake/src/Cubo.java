@@ -81,4 +81,9 @@ public class Cubo {
 		p3.setY(((y + p.getY()) / 2));
 		return p3;
 	}
+	
+	public Cubo clone(){
+		Cubo c=new Cubo(getX(),getY(),getL());
+		return c;
+	}
 }

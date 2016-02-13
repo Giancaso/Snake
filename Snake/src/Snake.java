@@ -42,9 +42,7 @@ public class Snake {
 		}
 	}
 
-	/**
-	 * Create contents of the window.
-	 */
+
 	protected void createContents() {
 		shlSnake = new Shell();
 		shlSnake.setSize(735, 459);
@@ -52,6 +50,8 @@ public class Snake {
 		
 		Canvas canvas = new Canvas(shlSnake, SWT.BORDER);
 		canvas.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+
+		canvas.setBounds(10, 10, Cx, Cy);
 		canvas.setBounds(10, 10, 500, 400);
 		
 		Button btnStart = new Button(shlSnake, SWT.NONE);

@@ -3,7 +3,7 @@ public class Serpente {
 	private final int NUM_MAX_CUBI = 50;
 
 	public Serpente() {
-		elencocubi = new Cubo[NUM_MAX_CUBI];
+		elencocubi = new Cubo[0];
 	}
 
 	public boolean aggiungi(Cubo c) {

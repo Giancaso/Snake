@@ -2,6 +2,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Label;
 
 public class Snake {
 
@@ -46,6 +47,10 @@ public class Snake {
 		
 		text = new Text(shell, SWT.BORDER);
 		text.setBounds(99, 119, 76, 21);
+		
+		Label lblCiao = new Label(shell, SWT.NONE);
+		lblCiao.setBounds(249, 44, 55, 15);
+		lblCiao.setText("CIAO");
 
 	}
 }

@@ -18,11 +18,10 @@ public class Snake {
 	private Serpente snake;
 	
 	GC gc;
+	
+	Cubo c = new Cubo();
 
-	/**
-	 * Launch the application.
-	 * @param args
-	 */
+	
 	public static void main(String[] args) {
 		try {
 			Snake window = new Snake();
@@ -66,6 +65,8 @@ public class Snake {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				snake = new Serpente();
+				snake.aggiungi(new Cubo());
+				gc.drawRectangle(snake.getCdaP(0).getX(),snake.getCubo(0).getY(), snake.getCubo(0).getL(), snake.getCubo(0).getL());
 			}
 		});
 		btnStart.setBounds(582, 10, 60, 25);
@@ -84,6 +85,13 @@ public class Snake {
 		btnGiu.setBounds(582, 351, 60, 60);
 		
 		Button btnDx = new Button(shlSnake, SWT.NONE);
+		btnDx.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				c.muovi("destra");
+				gc.drawRectangle(c.getX(), c.getY(), c.getL(), c.getL());
+			}
+		});
 		btnDx.setText(">");
 		btnDx.setBounds(649, 350, 60, 60);
 	}

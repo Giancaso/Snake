@@ -7,7 +7,7 @@ public class Cubo {
 	public Cubo() {
 		this.x = 250;
 		this.y = 200;
-		this.l = 3;
+		this.l = 4;
 	}
 
 	public Cubo(int x, int y, int l) {
@@ -81,9 +81,19 @@ public class Cubo {
 		p3.setY(((y + p.getY()) / 2));
 		return p3;
 	}
-	
-	public Cubo clone(){
-		Cubo c=new Cubo(getX(),getY(),getL());
+
+	public Cubo clone() {
+		Cubo c = new Cubo(getX(), getY(), getL());
 		return c;
+	}
+
+	public void muovi(String dir) {
+		//while (this.x < 500 || this.x > 0 || this.y != 0 || this.y!=400) {
+			switch (dir) {
+			case "destra":
+				this.x = this.x + 4;
+				break;
+			}
+		//}
 	}
 }

@@ -9,7 +9,7 @@ public class Serpente {
 	}
 
 	public void aggiungi(Cubo c) {
-		elencocubi=Arrays.copyOf(elencocubi, elencocubi.length);
+		elencocubi=Arrays.copyOf(elencocubi, elencocubi.length+1);
 		elencocubi[elencocubi.length-1]=c.clone();
 	}
 
@@ -63,5 +63,8 @@ public class Serpente {
 		}
 		return p;
 	}
-
+	
+	public Cubo getCdaP(int p){
+		return new Cubo(elencocubi[p].getX(), elencocubi[p].getY(), elencocubi[p].getL());
+	}
 }

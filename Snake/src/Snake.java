@@ -21,6 +21,14 @@ public class Snake {
 	
 	Cubo c = new Cubo();
 
+	public void disegna(){
+		//gc
+		for(int i=0; i<snake.getElementi(); i++){
+			gc.drawRectangle(snake.getCdaP(i).getX(),snake.getCdaP(i).getY(),snake.getCdaP(i).getL(),snake.getCdaP(i).getL());
+		}
+		
+	}
+	
 	
 	public static void main(String[] args) {
 		try {
@@ -66,7 +74,6 @@ public class Snake {
 			public void widgetSelected(SelectionEvent e) {
 				snake = new Serpente();
 				snake.aggiungi(new Cubo());
-				gc.drawRectangle(snake.getCdaP(0).getX(),snake.getCubo(0).getY(), snake.getCubo(0).getL(), snake.getCubo(0).getL());
 			}
 		});
 		btnStart.setBounds(582, 10, 60, 25);
@@ -88,8 +95,10 @@ public class Snake {
 		btnDx.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				c.muovi("destra");
-				gc.drawRectangle(c.getX(), c.getY(), c.getL(), c.getL());
+				//c.muovi("destra");
+				//gc.drawRectangle(c.getX(), c.getY(), c.getL(), c.getL());
+				snake.muovi("dx");
+				disegna();
 			}
 		});
 		btnDx.setText(">");

@@ -68,19 +68,6 @@ public class Cubo {
 		return dis;
 	}
 
-	public Cubo sommaPunto(Cubo p) {
-		Cubo p3 = new Cubo();
-		p3.setX((x + p.getX()));
-		p3.setY(y + p.getY());
-		return p3;
-	}
-
-	public Cubo medio(Cubo p) {
-		Cubo p3 = new Cubo();
-		p3.setX(((x + p.getX()) / 2));
-		p3.setY(((y + p.getY()) / 2));
-		return p3;
-	}
 
 	public Cubo clone() {
 		Cubo c = new Cubo(getX(), getY(), getL());

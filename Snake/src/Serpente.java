@@ -9,8 +9,8 @@ public class Serpente {
 	}
 
 	public void aggiungi(Cubo c) {
-		elencocubi=Arrays.copyOf(elencocubi, elencocubi.length+1);
-		elencocubi[elencocubi.length-1]=c.clone();
+		elencocubi = Arrays.copyOf(elencocubi, elencocubi.length + 1);
+		elencocubi[elencocubi.length - 1] = c.clone();
 	}
 
 	public boolean elimina(int pos) {
@@ -63,8 +63,23 @@ public class Serpente {
 		}
 		return p;
 	}
-	
-	public Cubo getCdaP(int p){
+
+	public Cubo getCdaP(int p) {
 		return new Cubo(elencocubi[p].getX(), elencocubi[p].getY(), elencocubi[p].getL());
 	}
+	
+	public int getElementi(){
+		return elencocubi.length;
+	}
+
+	public void muovi(String m) {
+		switch (m) {
+		case "dx":
+			for(int i=0; i<elencocubi.length; i++){
+				elencocubi[i].setX(elencocubi[i].getX()+elencocubi[i].getL());
+			}
+			break;
+		}
+	}
+
 }

@@ -20,17 +20,16 @@ public class Snake {
 	Canvas canvas;
 	
 	public void clean(){
-		gc.setForeground(SWTResourceManager.getColor(255, 255, 255));
+		gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 	}
 
 	public void disegna() {
-		clean();
-		gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		for (int i = 0; i < snake.getElementi(); i++) {
-			
+			clean();
+			gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 			gc.drawRectangle(snake.getCdaP(i).getX(), snake.getCdaP(i).getY(), snake.getCdaP(i).getL(),
 					snake.getCdaP(i).getL());
-			}
+		}
 
 	}
 
@@ -114,7 +113,7 @@ public class Snake {
 		btnDx.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				while(snake.getCdaP(0).getX() > Cx ) {
+				while(snake.getCdaP(0).getX() < Cx ) {
 					System.out.println(snake.getCdaP(0).toString());
 					snake.muovi("dx");
 					disegna();

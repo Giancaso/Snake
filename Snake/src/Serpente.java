@@ -79,6 +79,12 @@ public class Serpente {
 				elencocubi[i].setX(elencocubi[i].getX()+elencocubi[i].getL());
 			}
 			break;
+			
+		case "sx":
+			for(int i=0; i<elencocubi.length; i++){
+				elencocubi[i].setX(elencocubi[i].getX()-elencocubi[i].getL());
+			}
+			break;
 		}
 	}
 

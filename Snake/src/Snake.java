@@ -14,15 +14,20 @@ public class Snake {
 
 	private final int Cx = 500;
 	private final int Cy = 400;
-
 	private Serpente snake;
-
 	GC gc;
-
-	Cubo c = new Cubo();
+	
+	Canvas canvas;
+	
+	public void clean(){
+		gc.setForeground(SWTResourceManager.getColor(255, 255, 255));
+	}
 
 	public void disegna() {
+		clean();
+		gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 		for (int i = 0; i < snake.getElementi(); i++) {
+			
 			gc.drawRectangle(snake.getCdaP(i).getX(), snake.getCdaP(i).getY(), snake.getCdaP(i).getL(),
 					snake.getCdaP(i).getL());
 			}
@@ -58,7 +63,7 @@ public class Snake {
 		shlSnake.setSize(735, 459);
 		shlSnake.setText("Snake");
 
-		Canvas canvas = new Canvas(shlSnake, SWT.BORDER);
+		canvas = new Canvas(shlSnake, SWT.BORDER);
 		canvas.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 
 		canvas.setBounds(0, 10, Cx, Cy);
@@ -83,6 +88,21 @@ public class Snake {
 		btnSu.setText("^");
 
 		Button btnSx = new Button(shlSnake, SWT.NONE);
+		btnSx.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				while(snake.getCdaP(0).getX() < Cx ) {
+					System.out.println(snake.getCdaP(0).toString());
+					snake.muovi("sx");
+					disegna();
+					try {
+						Thread.sleep(50);
+					} catch (InterruptedException e1) {
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
 		btnSx.setText("<");
 		btnSx.setBounds(516, 351, 60, 60);
 
@@ -94,14 +114,13 @@ public class Snake {
 		btnDx.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				for (int i = 0; snake.getCdaP(0).getX() < Cx ; i++) {
+				while(snake.getCdaP(0).getX() > Cx ) {
 					System.out.println(snake.getCdaP(0).toString());
 					snake.muovi("dx");
 					disegna();
 					try {
-						Thread.sleep(10);
+						Thread.sleep(50);
 					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}

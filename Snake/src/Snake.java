@@ -90,7 +90,7 @@ public class Snake {
 		btnSx.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				while(snake.getCdaP(0).getX() < Cx ) {
+				while(snake.getCdaP(0).getX() > 5 ) {
 					System.out.println(snake.getCdaP(0).toString());
 					snake.muovi("sx");
 					disegna();

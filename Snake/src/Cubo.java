@@ -7,7 +7,7 @@ public class Cubo {
 	public Cubo() {
 		this.x = 250;
 		this.y = 200;
-		this.l = 4;
+		this.l = 5;
 	}
 
 	public Cubo(int x, int y, int l) {

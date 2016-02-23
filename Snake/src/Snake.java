@@ -19,13 +19,8 @@ public class Snake {
 	
 	Canvas canvas;
 	
-	public void clean(){
-		gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-	}
-
 	public void disegna() {
 		for (int i = 0; i < snake.getElementi(); i++) {
-			clean();
 			gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 			gc.drawRectangle(snake.getCdaP(i).getX(), snake.getCdaP(i).getY(), snake.getCdaP(i).getL(),
 					snake.getCdaP(i).getL());

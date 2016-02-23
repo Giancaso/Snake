@@ -16,9 +16,9 @@ public class Snake {
 	private final int Cy = 400;
 	private Serpente snake;
 	GC gc;
-	
+
 	Canvas canvas;
-	
+
 	public void disegna() {
 		for (int i = 0; i < snake.getElementi(); i++) {
 			gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
@@ -71,7 +71,7 @@ public class Snake {
 			public void widgetSelected(SelectionEvent e) {
 				snake = new Serpente();
 				snake.aggiungi(new Cubo());
-				gc.drawRectangle(Cx/2, Cy/2, snake.getCdaP(0).getL(), snake.getCdaP(0).getL());
+				gc.drawRectangle(Cx / 2, Cy / 2, snake.getCdaP(0).getL(), snake.getCdaP(0).getL());
 			}
 		});
 		btnStart.setBounds(582, 10, 60, 25);
@@ -85,7 +85,7 @@ public class Snake {
 		btnSx.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				while(snake.getCdaP(0).getX() > 5 ) {
+				while (snake.getCdaP(0).getX() > 5) {
 					System.out.println(snake.getCdaP(0).toString());
 					snake.muovi("sx");
 					disegna();
@@ -108,7 +108,7 @@ public class Snake {
 		btnDx.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				while(snake.getCdaP(0).getX() < Cx ) {
+				while (snake.getCdaP(0).getX() < Cx) {
 					System.out.println(snake.getCdaP(0).toString());
 					snake.muovi("dx");
 					disegna();

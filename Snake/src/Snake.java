@@ -14,13 +14,13 @@ public class Snake {
 
 	private final int Cx = 500;
 	private final int Cy = 400;
-	private Serpente snake;
+	private SerpNew snake;
 	GC gc;
 
 	Canvas canvas;
 
 	public void disegna() {
-		for (int i = 0; i < snake.getElementi(); i++) {
+		for (int i = 0; i < snake; i++) {
 			gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 			gc.drawRectangle(snake.getCdaP(i).getX(), snake.getCdaP(i).getY(), snake.getCdaP(i).getL(),
 					snake.getCdaP(i).getL());
@@ -69,7 +69,7 @@ public class Snake {
 		btnStart.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				snake = new Serpente();
+				snake = new SerpNew();
 				snake.aggiungi(new Cubo());
 				gc.drawRectangle(Cx / 2, Cy / 2, snake.getCdaP(0).getL(), snake.getCdaP(0).getL());
 			}

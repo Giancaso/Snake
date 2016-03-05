@@ -22,6 +22,14 @@ public class SerpNew {
 				elenco.get(i).setX(elenco.get(i).getX()-elenco.get(i).getL());
 			}
 			break;
+			
+		case "su":
+			for(int i=0; i<elenco.size(); i++){
+				elenco.get(i).setY(elenco.get(i).getY()-elenco.get(i).getL());
+			}
+			break;
+			
+			
 		}
 	}
 }

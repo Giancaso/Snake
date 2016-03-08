@@ -7,6 +7,8 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.events.KeyAdapter;
+import org.eclipse.swt.events.KeyEvent;
 
 public class Snake {
 
@@ -17,7 +19,7 @@ public class Snake {
 	private Serpente snake;
 	GC gc;
 	private int move = 0;
-	
+
 	Button btnStart;
 	Button btnSu;
 	Button btnDx;
@@ -97,7 +99,7 @@ public class Snake {
 			public void widgetSelected(SelectionEvent e) {
 				move = 1;
 				while (snake.getCdaP(0).getY() > 5) {
-					//System.out.println(snake.getCdaP(0).toString());
+					// System.out.println(snake.getCdaP(0).toString());
 					System.out.println(move);
 					snake.muovi("su");
 					disegna();
@@ -106,21 +108,24 @@ public class Snake {
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
+					if (btnSx.getSelection()) {
+						break;
+					}
 				}
 			}
 		});
 		btnSu.setBounds(582, 285, 60, 60);
 		btnSu.setText("^");
 
-		btnSx = new Button(shlSnake, SWT.NONE);
-		btnSx.addSelectionListener(new SelectionAdapter() {
+		btnDx = new Button(shlSnake, SWT.NONE);
+		btnDx.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				move = 4;
-				while (snake.getCdaP(0).getX() > 5) {
-					//System.out.println(snake.getCdaP(0).toString());
+				move = 2;
+				while (snake.getCdaP(0).getX() < Cx - 10) {
+					// System.out.println(snake.getCdaP(0).toString());
 					System.out.println(move);
-					snake.muovi("sx");
+					snake.muovi("dx");
 					disegna();
 					try {
 						Thread.sleep(50);
@@ -130,8 +135,8 @@ public class Snake {
 				}
 			}
 		});
-		btnSx.setText("<");
-		btnSx.setBounds(516, 351, 60, 60);
+		btnDx.setText(">");
+		btnDx.setBounds(649, 350, 60, 60);
 
 		btnGiu = new Button(shlSnake, SWT.NONE);
 		btnGiu.addSelectionListener(new SelectionAdapter() {
@@ -139,7 +144,7 @@ public class Snake {
 			public void widgetSelected(SelectionEvent e) {
 				move = 3;
 				while (snake.getCdaP(0).getY() < Cy - 10) {
-					//System.out.println(snake.getCdaP(0).toString());
+					// System.out.println(snake.getCdaP(0).toString());
 					System.out.println(move);
 					snake.muovi("giu");
 					disegna();
@@ -154,15 +159,15 @@ public class Snake {
 		btnGiu.setText("v");
 		btnGiu.setBounds(582, 351, 60, 60);
 
-		btnDx = new Button(shlSnake, SWT.NONE);
-		btnDx.addSelectionListener(new SelectionAdapter() {
+		btnSx = new Button(shlSnake, SWT.NONE);
+		btnSx.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				move = 2;
-				while (snake.getCdaP(0).getX() < Cx - 10) {
-					//System.out.println(snake.getCdaP(0).toString());
+				move = 4;
+				while (snake.getCdaP(0).getX() > 5) {
+					// System.out.println(snake.getCdaP(0).toString());
 					System.out.println(move);
-					snake.muovi("dx");
+					snake.muovi("sx");
 					disegna();
 					try {
 						Thread.sleep(50);
@@ -172,7 +177,7 @@ public class Snake {
 				}
 			}
 		});
-		btnDx.setText(">");
-		btnDx.setBounds(649, 350, 60, 60);
+		btnSx.setText("<");
+		btnSx.setBounds(516, 351, 60, 60);
 	}
 }

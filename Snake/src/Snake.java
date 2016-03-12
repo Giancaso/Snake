@@ -7,8 +7,6 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.GC;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
 
 public class Snake {
 
@@ -28,18 +26,19 @@ public class Snake {
 
 	Canvas canvas;
 
+	public void clean() {
+		for (int i = 0; i < snake.getElementi(); i++) {
+			gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+			gc.drawRectangle(snake.getCdaP(i).getX(), snake.getCdaP(i).getY(), snake.getCdaP(i).getL(),
+					snake.getCdaP(i).getL());
+		}
+	}
+
 	public void disegna() {
 		for (int i = 0; i < snake.getElementi(); i++) {
-
 			gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLACK));
 			gc.drawRectangle(snake.getCdaP(i).getX(), snake.getCdaP(i).getY(), snake.getCdaP(i).getL(),
 					snake.getCdaP(i).getL());
-
-			gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-			gc.drawRectangle(snake.getCdaP(i).getX() - snake.getCdaP(i).getX(),
-					snake.getCdaP(i).getY() - snake.getCdaP(i).getY(), snake.getCdaP(i).getL(),
-					snake.getCdaP(i).getL());
-
 		}
 
 	}
@@ -101,6 +100,7 @@ public class Snake {
 				while (snake.getCdaP(0).getY() > 5) {
 					// System.out.println(snake.getCdaP(0).toString());
 					System.out.println(move);
+					clean();
 					snake.muovi("su");
 					disegna();
 					try {
@@ -125,6 +125,7 @@ public class Snake {
 				while (snake.getCdaP(0).getX() < Cx - 10) {
 					// System.out.println(snake.getCdaP(0).toString());
 					System.out.println(move);
+					clean();
 					snake.muovi("dx");
 					disegna();
 					try {
@@ -146,6 +147,7 @@ public class Snake {
 				while (snake.getCdaP(0).getY() < Cy - 10) {
 					// System.out.println(snake.getCdaP(0).toString());
 					System.out.println(move);
+					clean();
 					snake.muovi("giu");
 					disegna();
 					try {
@@ -167,6 +169,7 @@ public class Snake {
 				while (snake.getCdaP(0).getX() > 5) {
 					// System.out.println(snake.getCdaP(0).toString());
 					System.out.println(move);
+					clean();
 					snake.muovi("sx");
 					disegna();
 					try {

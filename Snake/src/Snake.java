@@ -36,7 +36,7 @@ public class Snake {
 	
 	public int casual(int valore){
 		int n = random.nextInt(valore);
-		while(n % 10 != 0){
+		while(n % 10 != 0 && n>10){
 			n = random.nextInt(valore);
 		}
 		return n;
@@ -86,7 +86,9 @@ public class Snake {
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
-				
+				if(snake.getCdaP(0).getX()==mela.getX() && snake.getCdaP(0).getY()==mela.getY()){
+					System.out.println("bella");
+				}
 				//display.sleep();
 			}
 		}

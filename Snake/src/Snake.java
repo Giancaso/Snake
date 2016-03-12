@@ -108,10 +108,9 @@ public class Snake {
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
-					if (btnSx.getSelection()) {
-						break;
-					}
 				}
+				//snake.aggiungi(new Cubo(snake.getCdaP(0).getX(), snake.getCdaP(0).getY() + snake.getCdaP(0).getL(), snake.getCdaP(0).getL()));
+				//disegna();
 			}
 		});
 		btnSu.setBounds(582, 285, 60, 60);

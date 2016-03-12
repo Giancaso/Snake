@@ -23,8 +23,6 @@ public class Snake {
 	GC gc;
 	//private int move = 0;
 	String move;
-
-	Button btnStart;
 	Button btnSu;
 	Button btnDx;
 	Button btnSx;
@@ -73,7 +71,7 @@ public class Snake {
 				snake.muovi(move);
 				disegna();
 				try {
-					Thread.sleep(100);
+					Thread.sleep(50);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
@@ -111,20 +109,6 @@ public class Snake {
 		canvas.setBounds(10, 10, 500, 400);
 
 		gc = new GC(canvas);
-
-		btnStart = new Button(shlSnake, SWT.NONE);
-		btnStart.addSelectionListener(new SelectionAdapter() {
-			@Override
-			public void widgetSelected(SelectionEvent e) {
-				/*
-				snake = new Serpente();
-				snake.aggiungi(new Cubo());
-				gc.drawRectangle(Cx / 2, Cy / 2, snake.getCdaP(0).getL(), snake.getCdaP(0).getL());
-				*/
-			}
-		});
-		btnStart.setBounds(582, 10, 60, 25);
-		btnStart.setText("START");
 
 		btnSu = new Button(shlSnake, SWT.NONE);
 		btnSu.addSelectionListener(new SelectionAdapter() {

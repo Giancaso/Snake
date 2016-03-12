@@ -103,10 +103,9 @@ public class Snake {
 				gc.fillRectangle(mela.getX(), mela.getY(), mela.getL(), mela.getL());
 			}
 		});
+		
 		canvas.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
-
-		canvas.setBounds(0, 10, Cx, Cy);
-		canvas.setBounds(10, 10, 500, 400);
+		canvas.setBounds(10, 10, Cx, Cy);
 
 		gc = new GC(canvas);
 

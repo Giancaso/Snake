@@ -45,35 +45,42 @@ public class Serpente {
 	public Cubo getCdaP(int p) {
 		return new Cubo(elencocubi[p].getX(), elencocubi[p].getY(), elencocubi[p].getL());
 	}
-	
-	public int getElementi(){
+
+	public int getElementi() {
 		return elencocubi.length;
 	}
 
 	public void muovi(String m) {
 		switch (m) {
-		
+
 		case "dx":
-			for(int i=0; i<elencocubi.length; i++){
-				elencocubi[i].setX(elencocubi[i].getX()+elencocubi[i].getL());
+			if (elencocubi[0].getX() < 490) {
+				for (int i = 0; i < elencocubi.length; i++) {
+					elencocubi[i].setX(elencocubi[i].getX() + elencocubi[i].getL());
+				}
 			}
 			break;
-			
+
 		case "sx":
-			for(int i=0; i<elencocubi.length; i++){
-				elencocubi[i].setX(elencocubi[i].getX()-elencocubi[i].getL());
+			if (elencocubi[0].getX() > 0) {
+				for (int i = 0; i < elencocubi.length; i++) {
+					elencocubi[i].setX(elencocubi[i].getX() - elencocubi[i].getL());
+				}
 			}
 			break;
-			
+
 		case "su":
-			for(int i=0; i<elencocubi.length; i++){
-				elencocubi[i].setY(elencocubi[i].getY()-elencocubi[i].getL());
+			if (elencocubi[0].getY() > 0) {
+				for (int i = 0; i < elencocubi.length; i++) {
+					elencocubi[i].setY(elencocubi[i].getY() - elencocubi[i].getL());
+				}
 			}
 			break;
-			
+
 		case "giu":
-			for(int i=0; i<elencocubi.length; i++){
-				elencocubi[i].setY(elencocubi[i].getY()+elencocubi[i].getL());
+			if(elencocubi[0].getY() < 390)
+			for (int i = 0; i < elencocubi.length; i++) {
+				elencocubi[i].setY(elencocubi[i].getY() + elencocubi[i].getL());
 			}
 			break;
 		}

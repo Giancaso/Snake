@@ -1,5 +1,8 @@
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+
+import java.util.Random;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Canvas;
@@ -27,8 +30,18 @@ public class Snake {
 	Button btnDx;
 	Button btnSx;
 	Button btnGiu;
+	
+	Random random = new Random();
 
 	Canvas canvas;
+	
+	public int casual(int valore){
+		int n = random.nextInt(valore);;
+		while(n % 5 != 0){
+			n = random.nextInt(valore);
+		}
+		return n;
+	}
 
 	public void clean() {
 		for (int i = 0; i < snake.getElementi(); i++) {
@@ -66,9 +79,9 @@ public class Snake {
 		shlSnake.layout();
 		while (!shlSnake.isDisposed()) {
 			if (!display.readAndDispatch()) {
-				System.out.println(move);
 				clean();
 				snake.muovi(move);
+				System.out.println(snake.getCdaP(0));
 				disegna();
 				try {
 					Thread.sleep(50);
@@ -88,7 +101,8 @@ public class Snake {
 				snake = new Serpente();
 				snake.aggiungi(new Cubo());
 				move="su";
-				mela = new Cubo(10, 60, 5);
+				mela = new Cubo(casual(Cx-50), casual(Cy-50), 5);
+				System.out.println(mela);
 			}
 		});
 		shlSnake.setSize(735, 459);

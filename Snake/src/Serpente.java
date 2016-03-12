@@ -54,7 +54,7 @@ public class Serpente {
 		switch (m) {
 
 		case "dx":
-			if (elencocubi[0].getX() < 490) {
+			if (elencocubi[0].getX() < 480) {
 				for (int i = 0; i < elencocubi.length; i++) {
 					elencocubi[i].setX(elencocubi[i].getX() + elencocubi[i].getL());
 				}
@@ -78,7 +78,7 @@ public class Serpente {
 			break;
 
 		case "giu":
-			if(elencocubi[0].getY() < 390)
+			if(elencocubi[0].getY() < 380)
 			for (int i = 0; i < elencocubi.length; i++) {
 				elencocubi[i].setY(elencocubi[i].getY() + elencocubi[i].getL());
 			}

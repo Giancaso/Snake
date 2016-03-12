@@ -24,7 +24,6 @@ public class Snake {
 	private Serpente snake;
 	Cubo mela;
 	GC gc;
-	//private int move = 0;
 	String move;
 	Button btnSu;
 	Button btnDx;
@@ -36,8 +35,8 @@ public class Snake {
 	Canvas canvas;
 	
 	public int casual(int valore){
-		int n = random.nextInt(valore);;
-		while(n % 5 != 0){
+		int n = random.nextInt(valore);
+		while(n % 10 != 0){
 			n = random.nextInt(valore);
 		}
 		return n;
@@ -81,13 +80,13 @@ public class Snake {
 			if (!display.readAndDispatch()) {
 				clean();
 				snake.muovi(move);
-				System.out.println(snake.getCdaP(0));
 				disegna();
 				try {
-					Thread.sleep(50);
+					Thread.sleep(100);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
+				
 				//display.sleep();
 			}
 		}
@@ -101,7 +100,7 @@ public class Snake {
 				snake = new Serpente();
 				snake.aggiungi(new Cubo());
 				move="su";
-				mela = new Cubo(casual(Cx-50), casual(Cy-50), 5);
+				mela = new Cubo(casual(Cx-50), casual(Cy-50), 10);
 				System.out.println(mela);
 			}
 		});
@@ -141,11 +140,9 @@ public class Snake {
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
-				}
-				//snake.aggiungi(new Cubo(snake.getCdaP(0).getX(), snake.getCdaP(0).getY() + snake.getCdaP(0).getL(), snake.getCdaP(0).getL()));
-				//disegna();
+				}*/
 				
-				*/
+				
 			}
 		});
 		btnSu.setBounds(582, 285, 60, 60);

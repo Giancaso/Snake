@@ -4,6 +4,7 @@ public class Cubo {
 	private int y;
 	private int l;
 
+
 	public Cubo() {
 		this.x = 250;
 		this.y = 200;

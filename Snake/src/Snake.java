@@ -7,6 +7,10 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.GC;
+import org.eclipse.swt.events.ShellAdapter;
+import org.eclipse.swt.events.ShellEvent;
+import org.eclipse.swt.events.PaintListener;
+import org.eclipse.swt.events.PaintEvent;
 
 public class Snake {
 
@@ -15,8 +19,10 @@ public class Snake {
 	private final int Cx = 500;
 	private final int Cy = 400;
 	private Serpente snake;
+	Cubo mela;
 	GC gc;
-	private int move = 0;
+	//private int move = 0;
+	String move;
 
 	Button btnStart;
 	Button btnSu;
@@ -62,17 +68,43 @@ public class Snake {
 		shlSnake.layout();
 		while (!shlSnake.isDisposed()) {
 			if (!display.readAndDispatch()) {
-				display.sleep();
+				System.out.println(move);
+				clean();
+				snake.muovi(move);
+				disegna();
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+				//display.sleep();
 			}
 		}
 	}
 
 	protected void createContents() {
 		shlSnake = new Shell();
+		shlSnake.addShellListener(new ShellAdapter() {
+			@Override
+			public void shellActivated(ShellEvent e) {
+				snake = new Serpente();
+				snake.aggiungi(new Cubo());
+				move="su";
+				mela = new Cubo(10, 60, 5);
+			}
+		});
 		shlSnake.setSize(735, 459);
 		shlSnake.setText("Snake");
 
 		canvas = new Canvas(shlSnake, SWT.BORDER);
+		canvas.addPaintListener(new PaintListener() {
+			public void paintControl(PaintEvent arg0) {
+				gc.drawRectangle(Cx / 2, Cy / 2, snake.getCdaP(0).getL(), snake.getCdaP(0).getL());
+				gc.setBackground(SWTResourceManager.getColor(SWT.COLOR_RED));
+				gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
+				gc.fillRectangle(mela.getX(), mela.getY(), mela.getL(), mela.getL());
+			}
+		});
 		canvas.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 
 		canvas.setBounds(0, 10, Cx, Cy);
@@ -84,9 +116,11 @@ public class Snake {
 		btnStart.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				/*
 				snake = new Serpente();
 				snake.aggiungi(new Cubo());
 				gc.drawRectangle(Cx / 2, Cy / 2, snake.getCdaP(0).getL(), snake.getCdaP(0).getL());
+				*/
 			}
 		});
 		btnStart.setBounds(582, 10, 60, 25);
@@ -96,6 +130,8 @@ public class Snake {
 		btnSu.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				move = "su";
+				/*
 				move = 1;
 				while (snake.getCdaP(0).getY() > 5) {
 					// System.out.println(snake.getCdaP(0).toString());
@@ -111,6 +147,8 @@ public class Snake {
 				}
 				//snake.aggiungi(new Cubo(snake.getCdaP(0).getX(), snake.getCdaP(0).getY() + snake.getCdaP(0).getL(), snake.getCdaP(0).getL()));
 				//disegna();
+				
+				*/
 			}
 		});
 		btnSu.setBounds(582, 285, 60, 60);
@@ -120,7 +158,8 @@ public class Snake {
 		btnDx.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				move = 2;
+				move="dx";
+				/*move = 2;
 				while (snake.getCdaP(0).getX() < Cx - 10) {
 					// System.out.println(snake.getCdaP(0).toString());
 					System.out.println(move);
@@ -132,7 +171,7 @@ public class Snake {
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
-				}
+				}*/
 			}
 		});
 		btnDx.setText(">");
@@ -142,6 +181,8 @@ public class Snake {
 		btnGiu.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
+				move="giu";
+				/*
 				move = 3;
 				while (snake.getCdaP(0).getY() < Cy - 10) {
 					// System.out.println(snake.getCdaP(0).toString());
@@ -155,6 +196,7 @@ public class Snake {
 						e1.printStackTrace();
 					}
 				}
+				*/
 			}
 		});
 		btnGiu.setText("v");
@@ -164,7 +206,8 @@ public class Snake {
 		btnSx.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				move = 4;
+				move="sx";
+				/*move = 4;
 				while (snake.getCdaP(0).getX() > 5) {
 					// System.out.println(snake.getCdaP(0).toString());
 					System.out.println(move);
@@ -176,7 +219,7 @@ public class Snake {
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
 					}
-				}
+				}*/
 			}
 		});
 		btnSx.setText("<");

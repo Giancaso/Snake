@@ -29,15 +29,15 @@ public class Snake {
 	Button btnDx;
 	Button btnSx;
 	Button btnGiu;
-	
+
 	Random random = new Random();
 
 	Canvas canvas;
-	
-	public int casual(int valore){
+
+	public int casual(int valore) {
 		int n = random.nextInt(valore);
-		while(n % 10 != 0 && n>10){
-			n = random.nextInt(valore);
+		while (n % 10 != 0) {
+			n = 20 + random.nextInt(valore);
 		}
 		return n;
 	}
@@ -82,16 +82,56 @@ public class Snake {
 				snake.muovi(move);
 				disegna();
 				try {
-					Thread.sleep(100);
+					Thread.sleep(150);
 				} catch (InterruptedException e1) {
 					e1.printStackTrace();
 				}
-				if(snake.getCdaP(0).getX()==mela.getX() && snake.getCdaP(0).getY()==mela.getY()){
-					System.out.println("bella");
+				if (snake.getCdaP(0).getX() == mela.getX() && snake.getCdaP(0).getY() == mela.getY()) {
+					// System.out.println("bella");
+					gc.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+					gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
+					gc.fillRectangle(mela.getX(), mela.getY(), mela.getL(), mela.getL());
+
+					if (move.equals("dx")) {
+						snake.aggiungi(new Cubo(
+								snake.getCdaP(snake.getElementi() - 1).getX()
+										- snake.getCubo(snake.getElementi() - 1).getL(),
+								snake.getCdaP(snake.getElementi() - 1).getY(),
+								snake.getCdaP(snake.getElementi() - 1).getL()));
+					}
+					if (move.equals("sx")) {
+						snake.aggiungi(new Cubo(
+								snake.getCdaP(snake.getElementi() - 1).getX()
+										+ snake.getCubo(snake.getElementi() - 1).getL(),
+								snake.getCdaP(snake.getElementi() - 1).getY(),
+								snake.getCdaP(snake.getElementi() - 1).getL()));
+					}
+
+					if (move.equals("su")) {
+						snake.aggiungi(new Cubo(snake.getCdaP(snake.getElementi() - 1).getX(),
+								snake.getCdaP(snake.getElementi() - 1).getY()
+										+ snake.getCubo(snake.getElementi() - 1).getL(),
+								snake.getCdaP(snake.getElementi() - 1).getL()));
+					}
+
+					if (move.equals("giu")) {
+						snake.aggiungi(new Cubo(snake.getCdaP(snake.getElementi() - 1).getX(),
+								snake.getCdaP(snake.getElementi() - 1).getY()
+										- snake.getCubo(snake.getElementi() - 1).getL(),
+								snake.getCdaP(snake.getElementi() - 1).getL()));
+					}
+
+					mela.setX(casual(Cx - 50));
+					mela.setY(casual(Cy - 50));
+					gc.setBackground(SWTResourceManager.getColor(SWT.COLOR_RED));
+					gc.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
+					gc.fillRectangle(mela.getX(), mela.getY(), mela.getL(), mela.getL());
+
 				}
-				//display.sleep();
+				// display.sleep();
 			}
 		}
+
 	}
 
 	protected void createContents() {
@@ -101,8 +141,8 @@ public class Snake {
 			public void shellActivated(ShellEvent e) {
 				snake = new Serpente();
 				snake.aggiungi(new Cubo());
-				move="su";
-				mela = new Cubo(casual(Cx-50), casual(Cy-50), 10);
+				move = "su";
+				mela = new Cubo(casual(Cx - 50), casual(Cy - 50), 10);
 				System.out.println(mela);
 			}
 		});
@@ -118,7 +158,7 @@ public class Snake {
 				gc.fillRectangle(mela.getX(), mela.getY(), mela.getL(), mela.getL());
 			}
 		});
-		
+
 		canvas.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		canvas.setBounds(10, 10, Cx, Cy);
 
@@ -129,22 +169,6 @@ public class Snake {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
 				move = "su";
-				/*
-				move = 1;
-				while (snake.getCdaP(0).getY() > 5) {
-					// System.out.println(snake.getCdaP(0).toString());
-					System.out.println(move);
-					clean();
-					snake.muovi("su");
-					disegna();
-					try {
-						Thread.sleep(50);
-					} catch (InterruptedException e1) {
-						e1.printStackTrace();
-					}
-				}*/
-				
-				
 			}
 		});
 		btnSu.setBounds(582, 285, 60, 60);
@@ -154,20 +178,8 @@ public class Snake {
 		btnDx.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				move="dx";
-				/*move = 2;
-				while (snake.getCdaP(0).getX() < Cx - 10) {
-					// System.out.println(snake.getCdaP(0).toString());
-					System.out.println(move);
-					clean();
-					snake.muovi("dx");
-					disegna();
-					try {
-						Thread.sleep(50);
-					} catch (InterruptedException e1) {
-						e1.printStackTrace();
-					}
-				}*/
+				move = "dx";
+
 			}
 		});
 		btnDx.setText(">");
@@ -177,22 +189,8 @@ public class Snake {
 		btnGiu.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				move="giu";
-				/*
-				move = 3;
-				while (snake.getCdaP(0).getY() < Cy - 10) {
-					// System.out.println(snake.getCdaP(0).toString());
-					System.out.println(move);
-					clean();
-					snake.muovi("giu");
-					disegna();
-					try {
-						Thread.sleep(50);
-					} catch (InterruptedException e1) {
-						e1.printStackTrace();
-					}
-				}
-				*/
+				move = "giu";
+
 			}
 		});
 		btnGiu.setText("v");
@@ -202,20 +200,8 @@ public class Snake {
 		btnSx.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				move="sx";
-				/*move = 4;
-				while (snake.getCdaP(0).getX() > 5) {
-					// System.out.println(snake.getCdaP(0).toString());
-					System.out.println(move);
-					clean();
-					snake.muovi("sx");
-					disegna();
-					try {
-						Thread.sleep(50);
-					} catch (InterruptedException e1) {
-						e1.printStackTrace();
-					}
-				}*/
+				move = "sx";
+
 			}
 		});
 		btnSx.setText("<");
